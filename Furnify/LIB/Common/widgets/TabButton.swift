@@ -22,11 +22,7 @@ struct TabButton: View {
                 Image(systemName: tab.rawValue)
                     .font(.system(size: 24))
                     .foregroundColor(currentTab == tab ? .kPrimary : .gray)
-                    .frame(height: 24)
-                
-//                Text(tab.Tabname)
-//                    .font(.caption)
-//                    .foregroundColor(currentTab == tab ? .blue : .gray)
+//                    .frame(height: 24)
             }
             .frame(maxWidth: .infinity)
             .padding(10)

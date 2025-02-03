@@ -37,7 +37,6 @@ struct ImageSliderView: View {
             }
             .padding()
         }
-        .padding()
         .onAppear {
             Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
                 withAnimation {

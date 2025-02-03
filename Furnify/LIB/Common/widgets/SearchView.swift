@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var search = ""
+    
     var body: some View {
         HStack {
             TextAreas(
@@ -27,7 +28,6 @@ struct SearchView: View {
                         .fill(.kPrimary)
                 )
         }
-        .padding(.horizontal)
     }
 }
 

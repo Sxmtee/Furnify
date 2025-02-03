@@ -36,52 +36,53 @@ struct ContentView: View {
     @Namespace var animation
     
     var body: some View {
-        TabView(selection: $currentTab) {
-            Text("Home View")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
-                .tag(Tab.Home)
-            
-            Text("Search View")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
-                .tag(Tab.Search)
-            
-            Text("Notifications View")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
-                .tag(Tab.Notifications)
-            
-            Text("Cart View")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
-                .tag(Tab.Cart)
-            
-            Text("Profile View")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
-                .tag(Tab.Profile)
-        }
-        
-        // Custom Tab Bar
-        HStack(spacing: 0) {
-            ForEach(Tab.allCases, id: \.self) { tab in
-                TabButton(
-                    tab: tab,
-                    currentTab: $currentTab,
-                    animation: animation
-                )
+        ZStack(alignment: .bottom) {
+            TabView(selection: $currentTab) {
+                HomeScreen()
+                    .tag(Tab.Home)
+                
+                Text("Search View")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.white)
+                    .tag(Tab.Search)
+                
+                Text("Notifications View")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.white)
+                    .tag(Tab.Notifications)
+                
+                Text("Cart View")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.white)
+                    .tag(Tab.Cart)
+                
+                Text("Profile View")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.white)
+                    .tag(Tab.Profile)
             }
+            
+            // Custom Tab Bar
+            HStack(spacing: 0) {
+                ForEach(Tab.allCases, id: \.self) { tab in
+                    TabButton(
+                        tab: tab,
+                        currentTab: $currentTab,
+                        animation: animation
+                    )
+                }
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 20)
+            .background(.kSecondary)
+            .clipShape(Capsule())
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+            .padding(.horizontal, 20)
+            .padding(.bottom, 20)
         }
-        .padding(.horizontal)
-        .padding(.vertical, 20)
-        .background(.kSecondary)
-        .clipShape(Capsule())
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-        .padding(.horizontal, 20)
+        .ignoresSafeArea(edges: .bottom)
     }
 }
-
 
 
 #Preview {

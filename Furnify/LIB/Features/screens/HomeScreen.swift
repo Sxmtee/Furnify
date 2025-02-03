@@ -38,7 +38,9 @@ struct HomeScreen: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
                             ForEach(productList, id: \.id) { index in
-                                NavigationLink(destination: Text(index.name)) {
+                                NavigationLink(
+                                    destination: ProductDetailView(product: index)
+                                ) {
                                     ProductCardView(product: index)
                                 }
                             }
